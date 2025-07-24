@@ -1,0 +1,244 @@
+
+
+footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin: 0px;
+    border: 1px solid rgb(249, 5, 5);
+    background-color: rgb(53, 12, 255);
+    
+  }
+  
+  /* Logo Styling */
+  #logo-footer {
+    width: 150px;
+  }
+  
+  #logo-footer img {
+    height: 100px;
+    width: 150px;
+    margin-top: 50px;
+    margin-left: 22px;
+  }
+  
+  /* Footer Content */
+  footer .footer-content {
+    width: 99%;
+    height: 250px;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .footer-content .box {
+    height: 220px;
+    width: 370px;
+  }
+  
+  .box ul {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .box li {
+    margin: 4px;
+    text-decoration: none;
+  }
+  
+  ul li {
+    text-decoration: none;
+    list-style: none;
+  }
+  
+  ul li a {
+    font-size: 19px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .link-name {
+    text-decoration: underline;
+  }
+  
+  /* Subscribe Box */
+  .subscribe-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+  }
+  
+  #subscribe h2 {
+    margin-top: 5px;
+    font-size: 22px;
+    color: white;
+    margin-left: 3px;
+  }
+  
+  #subscribe hr {
+    margin: 10px;
+    color: white;
+  }
+  
+  #subscribe input {
+    width: 320px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  
+  #subscribe button {
+    background-color: #ff4500; /* Bright Orange Subscribe Button */
+    width: 320px;
+    margin: 5px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #subscribe button:hover {
+    background-color: blue;
+    border: 3px solid white;
+  }
+  
+  /* Footer Address */
+  .address {
+    margin: 100px;
+  }
+  
+  /* Footer Links */
+  .footer-links {
+    margin-top: 20px;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: 0.3s;
+    
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Social Media Icons */
+  .social-icons {
+    margin-top: 20px;
+    align-items: center;
+     
+  }
+  
+  /* Social Icons Container */.all-icon {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Social Icon Button Styling */
+  .social-icon {
+    display: flex; /* Ensures proper centering */
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .social-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  
+  .all-icon{
+    
+    margin-right: 40px;
+  }
+  /* Individual Social Media Colors */
+  #google {
+    background-color: #DB4437; /* Google Red */
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    padding: 10px;
+  }
+  
+  #facbook {
+    background-color: #4267B2;
+    text-decoration: none;
+    border-radius: 50%; /* Facebook Blue */
+    color: white;
+    padding: 10px;
+  }
+  
+  #linkdin {
+    background-color: #0077B5;
+    text-decoration: none;
+    border-radius: 50%; /* LinkedIn Blue */
+    color: white;
+    padding: 10px;
+  }
+  
+  #twitter {
+    background-color: #1DA1F2;
+    text-decoration: none; 
+    border-radius: 50%;/* Twitter Blue */
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Footer Text */
+  .footer-text {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* Icon Styling */
+  .fa-brands {
+    display: flex;  /* Ensure proper centering */
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  
+  /* cart */
+  #cart {
+    position: relative;
+    font-size: 24px;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+  }

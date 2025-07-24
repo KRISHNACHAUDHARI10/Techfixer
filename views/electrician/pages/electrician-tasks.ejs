@@ -1,0 +1,77 @@
+
+
+<%- include("../includes/navbar.ejs")  %>
+
+
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+  .task-card {
+    border-left: 5px solid #0d6efd;
+    transition: all 0.3s ease;
+  }
+  .task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .badge-status {
+    font-size: 0.9rem;
+    padding: 0.4em 0.7em;
+  }
+</style>
+  <div class="container  py-4" style="max-width: 800px;">
+  
+    <!-- Filter -->
+  
+    <% if (tasks.length === 0) { %>
+      <div class="alert alert-warning text-center">No tasks found.</div>
+    <% } %>
+
+    <% tasks.forEach(task => { %>
+      <div class="card mb-4 p-3 task-card">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <h5 class="mb-1">📝 Task ID: <code><%= task._id %></code></h5>
+            <p class="mb-1"><small class="text-muted">📅 <%= new Date(task.createdAt).toLocaleDateString() %></small></p>
+            <span class="badge bg-primary badge-status"><%= task.status %></span>
+          </div>
+        </div>
+
+        <hr>
+
+        <h6 class="fw-bold">🧑 Customer</h6>
+        <p class="mb-1"><strong>Name:</strong> <%= task.shippingAddress.fname %> <%= task.shippingAddress.lname %></p>
+        <p class="mb-1"><strong>Email:</strong> <%= task.shippingAddress.email %></p>
+        <p><strong>Address:</strong> <%= task.shippingAddress.address %>, <%= task.shippingAddress.city %></p>
+
+        <h6 class="fw-bold mt-3">📦 Products</h6>
+        <ul class="list-group list-group-flush mb-2">
+          <% task.products.forEach(product => { %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span><%= product.name %> (x<%= product.quantity %>)</span>
+              <span>₹<%= product.price %></span>
+            </li>
+          <% }) %>
+        </ul>
+
+        <p class="mb-1"><strong>Subtotal:</strong> ₹<%= task.subtotal %></p>
+        <p class="mb-2"><strong>Total:</strong> ₹<%= task.total %></p>
+
+        <form method="POST" action="/electrician/tasks/<%= task._id %>/status" class="row g-2 align-items-center">
+          <div class="col-8">
+            <select name="status" class="form-select">
+              <% ['Assigned', 'In Progress', 'Completed'].forEach(s => { %>
+                <option value="<%= s %>" <%= task.status === s ? 'selected' : '' %>><%= s %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-sm btn-primary w-100">Update</button>
+          </div>
+        </form>
+      </div>
+    <% }) %>
+  </div>
+  <%- include("../includes/footer.ejs")  %>
+

@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+  /* font-weight: bold; */
+}
+.hero {
+  width: 100%;
+}
+nav {
+  background: #0140fe;
+  width: 100%;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  margin-left: 15px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 120px;
+  cursor: pointer;
+}
+
+#cart {
+  color: white;
+  cursor: pointer;
+  margin: 15px;
+  font-size: 24px;
+}
+
+.user-pic{
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  /* padding-top: ; */
+  color: white;
+  font-size: 2rem;
+  background-color: red;
+  width: 6%;
+  height: 5%;
+  border-radius: 80%;
+  cursor: pointer; 
+}
+.user-picc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-color: red;
+  width: 45px;
+  height: 45px;
+  /* margin-left: 30px; */
+  /* margin-right:  15px ; */
+  border-radius: 80%;
+  cursor: pointer;
+}
+
+
+nav ul {
+
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0; 
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 15px;
+}
+
+nav ul a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav ul a:hover {
+  text-decoration: underline;
+}
+
+
+  .sub-menu-wrap {
+    position: absolute;
+    top: 60%;
+    right: 1%;
+    width: 200px;
+    background: white;
+    margin: 15px 0 12px;
+    overflow: hidden;
+    display: none; /* Initially hidden */
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above the carousel */
+  }
+
+
+.sub-menu-wrap:hover {
+  box-shadow: 2px 2px 5px grey;
+  cursor: pointer;
+}
+
+.sub-menu-wrap.open-menu {
+  max-height: 400px;
+  display: block; 
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 14px;
+}
+  
+
+.sub-pic {
+  height: 50px;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sub-menu {
+  background: #ffffff;
+  padding: 5px;
+  margin: 5px;
+}
+
+.user-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info h3 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.sub-menu hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #ccc;
+  margin: 15px 0;
+}
+
+#image-pic {
+  width: 70px;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sub-menu-link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #0303ff;
+  margin:   px 0;
+  transition: background-color 0.2s ease-in-out;
+  padding: 8px 0;
+}
+
+.sub-menu-link:hover {
+  background-color: #f0f0f0;
+}
+
+.sub-menu-link p {
+  width: 100%;
+  margin: 0;
+}
+
+.sub-menu-link img {
+  width: 40px;
+  height: 40px;
+  background: #e5e5e5;
+  border-radius: 50%;
+  padding: 3px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.sub-menu-link span {
+  font-size: 20px;
+  transition: transform 0.5s;
+}
+
+.sub-menu-link:hover span {
+  transform: translateX(5px);
+}
+
+.sub-menu-link:hover p {
+  font-weight: 600;
+}
+
+.sub-menu-text {
+  margin-left: 10px;
+  color: #0140fe;
+  cursor: pointer;
+}
+
+/* Search Bar */
+.search {
+  height: 40px;
+  --padding: 16px;
+  width: 100%;
+  max-width: 400px; /* Increased max-width for tablets */
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 28px;
+  background: #f6f6f6;
+  margin: 10px auto;
+}
+.gotop{
+  text-decoration: none;
+}
+.search-input {
+  font-size: 14px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin-left: var(--padding);
+  outline: none;
+  border: none;
+  width: 206px; /* Make input take full width within search bar */
+  background: transparent;
+  flex-grow: 1;
+}
+.material-symbols-outlined:hover{
+   cursor: pointer;
+}
+
+#carouselExampleControls img{
+  position: relative;
+  z-index: 1; 
+  height: 595px;
+}
+
+@media (max-width: 992px) { 
+  nav ul {
+      display: none;
+  }
+}

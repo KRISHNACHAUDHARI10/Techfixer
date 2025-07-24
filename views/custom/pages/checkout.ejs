@@ -1,0 +1,111 @@
+
+<link rel="stylesheet" href="/css/checkout.css">
+
+  <div class="payment-container ">
+
+    <div class="payment-form">
+        <h2 class="billing-header">Billing Details</h2>
+<form  id="submitform" >
+    <input type="hidden" name="data" value=' <%= data %>'  id="">
+    <input type="hidden" name="user" value='<%= isLogged._id %>'>
+        <div class="fr-ls">
+            <input type="text" name="fname"  placeholder="FIRST NAME" required>
+            <input type="text" name="lname"  placeholder="LAST NAME" required>
+        </div>
+        <input type="email" name="email"  placeholder="EMAIL ADDRESS" required>
+        <div class="address">
+            <input type="text" name="address"  placeholder="ADDRESS" required>
+        </div>
+        <input type="text" name="city"  placeholder="CITY" required>
+        <div class="fr-ls">
+            <input type="text" name="state"  placeholder="STATE" required>
+            <input type="text" name="zipcode"  placeholder="ZIP CODE" required>
+        </div>
+        <textarea name="notes"  placeholder="ADDITIONAL NOTES (OPTIONAL)"></textarea>
+</form>
+    </div>
+    <div class="payment-place">
+        <h2 class="heding">Order Summary</h2>
+        <div class="order-summary-wrapper">
+
+        <table>
+          <%  let parsedData = JSON.parse(data); %>
+          <% let list = (Object.keys(parsedData.product)) %>
+            <tr>
+                <th>Product</th>
+                <th>Qnt</th>
+                <th>Price</th>
+            </tr>
+            <% for(let i=0 ; i<list.length ;i++) { %>
+                <tr>
+                 <% let item1 = parsedData.product[list[i]] %> 
+                    <td><%= list[i] %></td>
+                    <td><%= item1[0] %></td>
+                    <td>₹<%= (item1[1] * item1[0] ) %></td>
+                </tr>
+                <% } %>
+                
+           
+            <tr style="margin-top: 50px;">
+                <th><span class="sub">Total</span></th>
+                <td></td>
+                <td>₹<%= parsedData.total %></td>
+            </tr>
+        </table>
+        </div>
+        <div class="payment-methods">
+            <h3 class="hedaer-method">Payment Methods</h3>
+            <!-- <div class="payment">
+                <img src="images/gpay.png" alt="Google Pay" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/2560px-Mastercard-logo.svg.png" alt="Mastercard"/>
+                <img src="images/visa.png" alt="Visa"/>
+                <img src="razorpay.png" alt="American Express"/>
+            </div> -->
+        </div>
+        <button id="stripe-pay-btn">PLACE ORDER</button>
+
+        <!-- <button type="submit" form="submitform">PLACE ORDER</button> -->
+        <script src="https://js.stripe.com/v3/"></script>
+<script>
+  const stripe = Stripe("pk_test_51RbN68H7MtYFZNLZsKLYFNPtbIoEnqlAScHPe0U8WOgJ2JLJooZ8auwcZgtiMFvZlsupfl653zxHguRn9mtqnR7a00RQiCnZou"); // Replace with Stripe Publishable Key
+
+  document.getElementById("stripe-pay-btn").addEventListener("click", async function (e) {
+    e.preventDefault();
+    
+    // Define the form variable here **before** using it
+    const form = document.getElementById("submitform");
+
+    // Now check the form validity
+    if (!form.checkValidity()) {
+      form.reportValidity(); // 🔔 shows browser validation messages
+      return;
+    }
+
+    // Collect form data
+    const formData = new FormData(form);
+    const plainData = Object.fromEntries(formData.entries());
+
+    // Send the form data to the backend to create the checkout session
+    const res = await fetch("/user/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(plainData)
+    });
+
+    // Get the session ID from the response
+    const { id } = await res.json();
+    
+    // Redirect to the Stripe checkout
+    const result = await stripe.redirectToCheckout({ sessionId: id });
+
+    // Handle any error from Stripe
+    if (result.error) {
+      alert(result.error.message);
+    }
+  });
+</script>
+
+        
+    </div>
+</div>
+

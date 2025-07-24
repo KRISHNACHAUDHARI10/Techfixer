@@ -1,0 +1,184 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Overview</li>
+</ol>
+
+
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">
+                <div class="card-body-icon fs-4">
+                    <i class="fas fa-fw fa-users"></i>
+                </div>
+                <div class="mr-5">Users:<span class=" "> <%= ucount %></span> </div>
+                </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/admin/manageUser">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">
+                <div class="card-body-icon fs-4">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                </div>
+                
+                <div class="mr-5">Elecricians:<span class=" "> <%= ecount %></span> </div>
+                </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/admin/manageElectrician">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">
+                <div class="card-body-icon fs-4">
+                    <i class="fa-solid fa-toolbox"></i>
+                </div>
+                <div class="mr-5">Categories:     <span class=" "><%= ccount %></span> </div>
+                </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/admin/manageCategory">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-secondary text-white mb-4">
+            <div class="card-body">
+                <div class="card-body-icon fs-4">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                </div>
+                <div class="mr-5">Services:     <span class=" "><%= scount %></span> </div>
+                </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/admin/manageService">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">
+                <div class="card-body-icon fs-4">
+                    <i class="fas fa-fw fa fa-address-book"></i>
+                </div>
+                <div class="mr-5">Bookings:     <span class=" "><%= bcount %></span> </div>
+                </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/admin/viewBooking">View Details</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Bookings
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+        <table class="table table-bordered text-center text-bold" id="dataTable" width="80%" cellspacing="0">
+           
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Electrician</th>
+                    <th>Products</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Date</th>
+                    <th>Status</th>
+              
+                  </tr>
+                </thead>
+                <tbody>
+                  <% orders.forEach(order => { %>
+                    <tr>
+                      <td><%= order._id %></td>
+                      <td><%= order.shippingAddress.fname %> <%= order.shippingAddress.lname %></td>
+                      
+                      <td>
+                        <% if (order.electrician) { %>
+                          <%= order.electrician.first_name %> <%= order.electrician.last_name %><br>
+                          📞 <%= order.electrician.phone %>
+                        <% } else { %>
+                          <em>Not assigned</em>
+                        <% } %>
+                      </td>
+              
+                      <td>
+                        <ul>
+                          <% order.products.forEach(p => { %>
+                            <li><%= p.name %> (x<%= p.quantity %>) - ₹<%= p.price %></li>
+                          <% }) %>
+                        </ul>
+                      </td>
+                      <td>₹<%= order.total %></td>
+              
+                      <td class="<%= order.payment_status === 'Pending' ? 'badge bg-danger' : 'badge bg-success' %>">
+                        <strong><%= order.payment_status %></strong>
+                      </td>
+              
+              
+                      <td><%= new Date(order.createdAt).toLocaleDateString('en-IN') %></td>
+                      <td class="badge <%= order.status === 'Pending' 
+                      ? 'bg-warning' 
+                      : order.status === 'Cancelled' 
+                        ? 'bg-danger' 
+                        : 'bg-success' %>">
+              <strong><%= order.status %></strong>
+              </td>
+              
+                      
+              
+              
+                      
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+          </div>
+    </div>
+    <div class="card-footer small text-muted">
+<%- include("../includes/footer.ejs")  %>
+   
+ 
+    </div>
+</div>
+
+
+
+

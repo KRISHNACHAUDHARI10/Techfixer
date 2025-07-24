@@ -1,0 +1,77 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Manage Services</li>
+</ol>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-users"></i>
+        Registered Services
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center text-bold" id="dataTable" width="80%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Service</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i = 0 ;i < list.length ; i++) { %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= list[i].service_name %></td>
+                        <td><%= list[i].category_name %></td>
+                        <td><%= list[i].price %></td>
+                        <td><%= list[i].time %></td>
+        <td><img src="<%= list[i].service_image %>" width="80px" height="65px"></td>
+        <td style="width: 20%;"><p style="height: 70px; padding: 0; margin: 0; text-overflow: ellipsis; overflow: hidden;"><%= list[i].description %> </p></td>
+                      
+                        
+                          <td>
+                            
+                            <div class="d-flex justify-content-evenly">
+                            <a href="/admin/service/<%= list[i]._id %>"  > <button class="btn btn-success"><i class="fa fa-user-edit"></i> </button></a>
+
+
+                          <form  method="post" action="/admin/service/<%= list[i]._id%>?_method=DELETE">
+                            <button onclick="return confirm('Are You Sure ?')" class=" btn  btn-danger">
+                                <i class="fa fa-trash"></i>
+                              </button>
+                            </form>  
+                                </div>
+                        </td>
+
+
+                    </tr>
+
+                    <% }
+                    if(list.length<1){
+                    %>
+                    <tr>
+                        <td colspan="8" style="text-align: center;"><h5>No Services Available </h5></td>
+                    </tr>
+                    <% } %>
+
+                </tbody>    
+
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+<%- include("../includes/footer.ejs")  %>

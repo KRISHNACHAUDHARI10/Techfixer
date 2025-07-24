@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/css/footer.css">
+
+<footer>
+    <div class="footer-content">
+      <div class="box" id="logo-footer">
+       <img src="/images/logo.png">    
+      </div>
+      <div class="box" id="address">
+          
+        <ul>
+          <li class="link-name"><a  href="home.html" class="link-name">Our Compney</a></li>
+            <li><a  href="/user/">Home</a></li>
+            <li><a href="/user/about">About</a></li>
+            <li><a href="/user/service">Service</a></li>
+            <li><a href="/user/contact">Contact</a></li>
+            
+        </ul> 
+      </div>   
+       <div class="box" id="address">
+          
+        <ul>
+          <li class="link-name"><a  href="home.html" class="link-name">Our Services</a></li>
+            <li><a  href="/user/service">Fan Reparing</a></li>
+            <li><a href="/user/service">light Reparing</a></li>
+            <li><a href="/user/service">Switch Reparing</a></li>
+            <li><a href="/user/service">Msb Reparing</a></li>
+            
+        </ul> 
+      </div>   
+        <div class="box" id="address">
+          
+          <ul>
+            <li class="link-name"><a  href="home.html" class="link-name">Our Location</a></li>
+              <li><a  href="home.html">Mumbai</a></li>
+              <li><a href="about.html">Pune</a></li>
+              <li><a href="service.html">Surat</a></li>
+              <li><a href="blog.html">AhmadNager</a></li>
+              
+          </ul> 
+        </div>  
+        
+        <div class="box mt-5"  id="subscribe">
+          <!-- <h2>Subscribe Us</h2> -->
+          <hr>
+          <!-- <input type="text" placeholder="Enter your Email">   -->
+          <a href="/electrician/login" target="_blank"><button>Be a Electrician</button>   </a>
+          <a href="/admin/login" target="_blank"><button>Admin</button>   </a>
+
+          <div class="all-icon">
+            <a href="https://www.google.com" target="_blank" aria-label="Google" id="google" class="font-footer">
+              <i class="fa-brands fa-google"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" id="facbook" class="font-footer">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn" id="linkdin" class="font-footer">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" aria-label="Twitter" id="twitter" class="font-footer">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+          
+                 
+       
+                
+    </div>    
+  </footer>   
+
+  <script>
+    let subMenu = document.getElementById("subMenu");
+    function toggkemenu() {
+      subMenu.classList.toggle("open-menu");
+    }
+    function toggleProducts() {
+      let productList = document.getElementById("productList");
+      if (productList.style.display === "none" || productList.style.display === "") {
+          productList.style.display = "block";
+      } else {
+          productList.style.display = "none";
+      }
+  }
+  
+  function toggleProducts() {
+    let productList = document.getElementById("productList");
+    productList.classList.toggle("show");
+}
+
+document.querySelector(".view-more").addEventListener("click", function() {
+  document.querySelector(".popup").style.display = "block";
+  document.querySelector(".popup-overlay").style.display = "block";
+});
+document.querySelector(".close-icon").addEventListener("click", function() {
+  document.querySelector(".popup").style.display = "none";
+  document.querySelector(".popup-overlay").style.display = "none";
+});
+
+  </script>

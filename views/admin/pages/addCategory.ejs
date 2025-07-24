@@ -1,0 +1,36 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Add Category</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        Add Category
+    </div>
+    <div class="card-body">
+        <!--Add User Form-->
+        <form action="/admin/addCategory"  method="post" enctype="multipart/form-data">
+          
+                <div class="form-group col-md-8 mb-3">
+                    <label for="floatingInput">Category Name</label>
+                    <input type="text" class="form-control" id="floatingInput" name="category_name" placeholder="Category">
+                </div>
+                
+          
+            <div class="form-group mb-3 col-md-8" >
+                <label for="category_image">Category Image</label>
+                <input type="file" class="form-control form-control-lg " name="category_image" id="category_image">
+            </div>
+        <br>
+            <button type="submit"  class="btn btn-success">Add Category</button>
+        </form>
+        <!-- End Form-->
+    </div>
+</div>
+
+<%- include("../includes/footer.ejs")  %>

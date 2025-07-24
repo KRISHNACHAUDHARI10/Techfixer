@@ -1,0 +1,51 @@
+<%- include("../includes/navbar.ejs")  %>
+
+  <div class="container">
+    <h2 class="mb-4">Dashboard</h2>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card text-white bg-dark h-100">
+          <div class="card-body text-center">
+            <h4>Total Tasks</h4>
+            <h2><%= stats.total %></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-info h-100">
+          <div class="card-body text-center">
+            <h4>Assigned</h4>
+            <h2><%= stats.assigned %></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-primary h-100">
+          <div class="card-body text-center">
+            <h4>In Progress</h4>
+            <h2><%= stats.inProgress %></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-success h-100">
+          <div class="card-body text-center">
+            <h4>Completed</h4>
+            <h2><%= stats.completed %></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-danger h-100 mt-4">
+          <div class="card-body text-center">
+            <h4>Cancelled</h4>
+            <h2><%= stats.cancelled %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include("../includes/footer.ejs")  %>
+  

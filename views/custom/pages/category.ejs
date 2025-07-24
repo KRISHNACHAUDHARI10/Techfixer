@@ -1,0 +1,152 @@
+<%- include('../includes/navbar.ejs') %>
+<link rel="stylesheet" href="/css/category.css">
+
+ <!--     this handling both category and subcategory -->
+<div class="container-all">           
+    <!--     this handling bot category and subcategory -->
+
+
+  <!-- this is category section which is rite side -->
+  <div class="slidebar" id="sidebar">
+      <div class="category" >
+        <h3 onclick="toggleProducts()">Our Services       
+          </h3>
+          <img src="/images/arrow.png" onclick="toggleProducts()">
+
+      </div>
+      <div class="productes" id="productList">
+      <% for(let i=0 ;i<category.length ;i++) {  %>
+
+          <div class="product1">
+              <img src="<%= category[i].category_image %>" alt="fan">
+              <a href="#<%= category[i].category_name %>"><%= category[i].category_name %> </a>
+          </div>
+          <% } %>
+   </div>
+  </div>
+    <!-- category section    Overrrrr-->
+
+  <!-- Subcategory Section start -->
+  <div class="subcategory-all">
+    <%- include('../includes/flash.ejs') %>
+
+    <div class="subcategory">
+      <% let currentCategory = ''; %>
+      <% for (let i = 0; i < service.length; i++) { %>
+        
+        <!-- Check if category changes -->
+        <% if (service[i].category_name !== currentCategory) { %>
+          <% currentCategory = service[i].category_name; %> <!-- Update the current category -->
+          
+          <!-- Render category heading only once per category -->
+          <h1 id="<%= service[i].category_name %>" class="category_headings"><%= service[i].category_name %></h1>
+          
+          <!-- Start subcategory grid for this category -->
+          <div class="subcategory-grid">
+        <% } %>
+  
+        <!-- Product in the current category -->
+        <div class="subcategory-box">
+          <div class="details-box">
+            <h2><%= service[i].service_name %></h2>
+            <p><strong>Price:</strong> ₹<%= service[i].price %></p>
+            <p class="rating">⭐⭐⭐⭐⭐ (4.5)</p>
+            <p class="description">
+              <%= service[i].description %>
+            </p>
+            <p class="time"><span>Time :</span><%= service[i].time %> min </p>
+            <h4 class="view-more"> View more</h4>
+          </div>
+          <div class="image-box">
+            <img src="<%= service[i].service_image %>" alt="<%= service[i].service_name %>">
+            
+            <% var serviceId = service[i]._id.toString(); %>
+            <% if (cartdata && cartdata.includes(serviceId)) { %>
+               <a href="/user/cart">
+                <button class="btn  btn-success">Go to Cart</button>
+              </a>
+            <% } else { %>
+                <a href="/user/addCart?service=<%= service[i]._id %>">
+                    <button class="btn btn-primary ">Add to Cart</button>
+                </a>
+            <% } %>
+            
+          </div>
+        </div>
+  
+        <!-- Close the subcategory grid after the last product of the current category -->
+        <% if (i === service.length - 1 || service[i + 1].category_name !== currentCategory) { %>
+          </div> <!-- Close subcategory-grid -->
+        <% } %>
+  
+      <% } %> <!-- End of for loop -->
+    </div>
+  </div>
+  
+
+
+     
+
+   
+   <!-- this is view more box -->
+    <div class="popup-overlay"></div>
+    <div class="popup">
+        <span class="close-icon">&times;</span>
+        
+       <div class="include">
+        <h1>Include</h1>
+        <hr>
+        <p>👉Installation 1 Fan Only</p>
+        <br>
+        <p>👉Post Services Ceiling</p>
+      </div>
+       <div class="Plese-Note">
+      <h2>Please Note</h2>
+      <hr>
+        <p>ℹ️Provide Some Tools If Required</p>
+        <p>ℹ️Wiring Of More than Cost Extra</p>
+        <p>ℹ️ Warranty  does'nt cover spare parts sourced  by customers</p>
+      </div>
+      </div></div>
+      <%- include('../includes/footer.ejs') %>
+   
+      
+    
+    
+      
+     <!-- view more box   Over-->
+        
+    
+    </body>
+    </html>
+  
+ <!-- view more box   Over-->
+     <script>
+      let subMenu = document.getElementById("subMenu");
+      function toggkemenu() {
+        subMenu.classList.toggle("open-menu");
+      }
+      function toggleProducts() {
+        let productList = document.getElementById("productList");
+        if (productList.style.display === "none" || productList.style.display === "") {
+            productList.style.display = "block";
+        } else {
+            productList.style.display = "none";
+        }
+    }
+    
+    function toggleProducts() {
+      let productList = document.getElementById("productList");
+      productList.classList.toggle("show");
+  }
+  
+  document.querySelector(".view-more").addEventListener("click", function() {
+    document.querySelector(".popup").style.display = "block";
+    document.querySelector(".popup-overlay").style.display = "block";
+});
+document.querySelector(".close-icon").addEventListener("click", function() {
+    document.querySelector(".popup").style.display = "none";
+    document.querySelector(".popup-overlay").style.display = "none";
+});
+  
+    </script>

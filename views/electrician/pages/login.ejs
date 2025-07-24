@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Texhfixer</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+        <style>
+          .glass-card {
+    background: rgba(0, 0, 0, 0.2); /* semi-transparent white */
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* for Safari support */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+        </style>
+    </head>
+    <body class="">
+      <section class="vh-100" style="background: url('/images/electrician_login.jpg') no-repeat center center; background-size: cover;">
+
+            <div class="container py-5   ">
+<%- include("../includes/flash.ejs")  %>
+
+              <div class="row d-flex   h-100">
+               
+                <div class="col-md-5 col-lg-5 col-xl-5 px-4 py-3 offset-1 glass-card  shadow">
+                    <form method="post" action="/electrician/login">
+                    <h2 class="text-center text-primary">Electrician Login</h2>
+                    <hr>
+                    <!-- Email input -->
+
+                    <div data-mdb-input-init class="form-outline mb-4 col-md-10 offset-1">
+                      <label class="form-label text-dark" for="form1Example13">Email address</label>
+
+                      <input type="email" id="form1Example13" class="form-control bg-light form-control" name="email"/>
+                    </div>
+          
+                    <!-- Password input -->
+                    <div data-mdb-input-init class="form-outline mb-4 col-md-10 offset-1">
+                      <label class="form-label text-dark" for="form1Example23">Password</label>
+
+                        <input type="password" id="form1Example23" class="form-control form-control" name="password"/>
+
+                    </div>
+          
+                    <div class="d-flex justify-content-around align-items-center text-dark mb-2">
+                      <!-- Checkbox -->
+                      <div class="d-flex justify-content-between ">
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                          <label class="form-check-label" for="form1Example3"> Remember me </label>
+                        <a class="text-dark ml-1" href="#!"> Forgot password?</a>
+
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="d-flex justify-content-around align-items-center ">
+
+                    <p class="text-dark">Don't have an Account  <a class="text-light text-decoration-none" href="/electrician/register"> Register</a></p>
+          </div>
+                    <!-- Submit button -->
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn mb-4 btn-primary text-center btn-lg btn-block offset-4">Sign in</button>
+          
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Add Electrician</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        Add Electrician
+    </div>
+    <div class="card-body">
+        <!--Add User Form-->
+        <form method="post" action="/admin/addElectrician">
+            <div class="row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputfname">First Name</label>
+                <input type="text" required class="form-control" id="exampleInputfname" name="first_name">
+            </div>
+            <div class="form-group col-md-6 ">
+                <label for="exampleInputlname">Last Name</label>
+                <input type="text" class="form-control" id="exampleInputlname" name="last_name">
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputcontact">Phone</label>
+                <input type="text" class="form-control" id="exampleInputcontact" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputaddress1">Address</label>
+                <input type="text" id="exampleInputaddress1" class="form-control"  name="address">
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" id="exampleInputEmail1" class="form-control" name="email">
+</div>
+
+<div class=" form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+            </div>
+<br>
+            <button type="submit"  class="btn btn-success">Add Electrician</button>
+        </form>
+        <!-- End Form-->
+    </div>
+</div>
+
+<%- include("../includes/footer.ejs")  %>

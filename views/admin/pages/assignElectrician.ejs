@@ -1,0 +1,80 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+  <li class="breadcrumb-item">
+      <a href="/admin">Dashboard</a>
+  </li>
+  <li class="breadcrumb-item active">Assign Electrician</li>
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+      <i class="fas fa-users"></i>
+      Unassigned Orders
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered text-center text-bold" id="dataTable" width="80%" cellspacing="0">
+            <thead>
+    <tr>
+      <th>Order No</th>
+      <th>Customer</th>
+      <th>Email</th>
+      <th>Products</th>
+      <th>Total</th>
+      <th>Shipping Address</th>
+      <th>Status</th>
+      <th>Payment</th>
+      <th>Electrician</th>
+      <th>Assign </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.forEach((order , index) => { %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= order.shippingAddress.fname %> <%= order.shippingAddress.lname %></td>
+        <td><%= order.shippingAddress.email %></td>
+
+        <td>
+          <ul>
+            <% order.products.forEach(p => { %>
+              <li><%= p.name %> (x<%= p.quantity %>) - ₹<%= p.price %></li>
+            <% }) %>
+          </ul>
+        </td>
+
+        <td>₹<%= order.total %></td>
+
+        <td>
+          <%= order.shippingAddress.address %>, <%= order.shippingAddress.city %>, 
+          <%= order.shippingAddress.state %> - <%= order.shippingAddress.zipcode %>
+        </td>
+
+        <td><%= order.status %></td>
+        <td class="badge bg-success"><%= order.payment_status %></td>
+
+        <td>
+          <form action="/admin/assignElectrician" method="POST" id="assign-<%= index %>">
+
+            <input type="hidden" name="orderId" value="<%= order._id %>">
+            <select name="electricianId" required>
+              <option selected disabled value="">Select Electrician</option>
+              <% electricians.forEach(e => { %>
+
+                <option value="<%= e._id %>"><%= e.first_name %> <%= e.last_name %></option>
+              <% }) %>
+            </select>
+          </form>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-outline-success" form="assign-<%= index %>">Assign</button>
+
+
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include("../includes/footer.ejs")  %>

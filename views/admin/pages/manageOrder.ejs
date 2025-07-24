@@ -1,0 +1,76 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+  <li class="breadcrumb-item">
+      <a href="/admin">Dashboard</a>
+  </li>
+  <li class="breadcrumb-item active">Manage Order</li>
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+      <i class="fas fa-users"></i>
+      Manage Orders
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered text-center text-bold" id="dataTable" width="80%" cellspacing="0">
+           
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer</th>
+      <th>Electrician</th>
+      <th>Products</th>
+      <th>Status</th>
+      <th>Total</th>
+      <th>Update Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.forEach(order => { %>
+      <tr>
+        <td><%= order._id %></td>
+        <td><%= order.shippingAddress.fname %> <%= order.shippingAddress.lname %></td>
+        
+        <td>
+          <% if (order.electrician) { %>
+            <%= order.electrician.first_name %> <%= order.electrician.last_name %><br>
+            📞 <%= order.electrician.phone %>
+          <% } else { %>
+            <em>Not assigned</em>
+          <% } %>
+        </td>
+
+        <td>
+          <ul>
+            <% order.products.forEach(p => { %>
+              <li><%= p.name %> (x<%= p.quantity %>) - ₹<%= p.price %></li>
+            <% }) %>
+          </ul>
+        </td>
+
+        <td><strong><%= order.status %></strong></td>
+
+        <td>₹<%= order.total %></td>
+
+        <td>
+          <form action="/admin/updateOrder" method="POST">
+            <input type="hidden" name="orderId" value="<%= order._id %>">
+            <select name="status" required>
+              <option value="Pending" <%= order.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+              <option value="Assigned" <%= order.status === 'Assigned' ? 'selected' : '' %>>Assigned</option>
+              <option value="In Progress" <%= order.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+              <option value="Completed" <%= order.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+              <option value="Cancelled" <%= order.status === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+            </select>
+            <button type="submit" class="btn btn-success">Update</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include("../includes/footer.ejs")  %>
+

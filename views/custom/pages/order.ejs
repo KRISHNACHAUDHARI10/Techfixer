@@ -1,0 +1,88 @@
+<%- include('../includes/navbar.ejs') %>
+
+
+  <div class="container">
+    <h1 class="mb-4">My Orders</h1>
+
+    <!-- Filter -->
+    <form method="get" action="/user/my-orders" class="mb-4">
+      <select name="status" class="form-select w-auto d-inline-block" onchange="this.form.submit()">
+        <option value="">Filter by Status</option>
+        <option value="Pending">Pending</option>
+        <option value="Assigned">Assigned</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </form>
+
+    <% if (orders.length === 0) { %>
+      <p>No orders found.</p>
+    <% } %>
+
+    <% orders.forEach(order => { %>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="card-title mb-0">Order: <%= new Date(order.createdAt).toLocaleDateString() %></h5>
+            <span class="badge bg-<%= 
+              order.status === 'Pending' ? 'secondary' :
+              order.status === 'Assigned' ? 'info' :
+              order.status === 'In Progress' ? 'primary' :
+              order.status === 'Completed' ? 'success' : 'danger'
+            %>"><%= order.status %></span>
+          </div>
+
+          <!-- Stepper -->
+          <div class="mb-3">
+            <% const steps = ['Pending', 'Assigned', 'In Progress', 'Completed']; %>
+            <% steps.forEach(step => { %>
+              <span class="badge rounded-pill 
+                <%= steps.indexOf(step) <= steps.indexOf(order.status) 
+                  ? 'bg-success' : 'bg-light text-dark border' %> me-2"><%= step %></span>
+            <% }) %>
+          </div>
+
+          <!-- Products -->
+          <h6>Products</h6>
+          <ul class="list-group mb-3">
+            <% order.products.forEach(item => { %>
+              <li class="list-group-item d-flex justify-content-between">
+                <span><%= item.quantity %> × <%= item.name %></span>
+                <span>$<%= item.price %></span>
+              </li>
+            <% }) %>
+          </ul>
+
+          <p><strong>Total:</strong> $<%= order.total %></p>
+
+          <!-- Electrician -->
+          <div class="mt-3">
+            <h6>Electrician</h6>
+            <% if (order.electrician) { %>
+              <p class="mb-1"><strong>Name:</strong> <%= order.electrician.first_name %> <%= order.electrician.last_name %></p>
+              <p class="mb-1"><strong>Phone:</strong> <a href="tel:<%= order.electrician.phone %>"><%= order.electrician.phone %></a></p>
+              <p class="mb-1"><strong>Email:</strong> <a href="mailto:<%= order.electrician.email %>"><%= order.electrician.email %></a></p>
+
+              <div class="mt-2">
+                <a href="tel:<%= order.electrician.phone %>" class="btn btn-outline-primary btn-lg me-2">📞 Call</a>
+                <a href="mailto:<%= order.electrician.email %>" class="btn btn-outline-secondary btn-lg">✉️ Email</a>
+              </div>
+            <% } else { %>
+              <p class="text-muted">Electrician not assigned yet.</p>
+            <% } %>
+          </div>
+
+          <!-- Cancel button -->
+          <% if (order.status === 'Pending') { %>
+            <form method="POST" action="/my-orders/<%= order._id %>/cancel" class="mt-3">
+              <button type="submit" class="btn btn-danger">Cancel Order</button>
+            </form>
+          <% } %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+<%- include('../includes/footer.ejs') %>
+ 

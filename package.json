@@ -1,0 +1,32 @@
+{
+  "name": "techfixer",
+  "version": "1.0.0",
+  "main": "index.js",
+
+  "keywords": [],
+  "type": "commonjs",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cloudinary": "^1.41.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.7",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "flash": "^1.1.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "razorpay": "^2.9.6",
+    "session": "^0.1.0",
+    "stripe": "^18.0.0"
+  }
+}

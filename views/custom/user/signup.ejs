@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit-pro.fontawesome.com/releases/v5.15.1/js/pro.min.js"></script>
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/signup.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />   
+    
+    <title>TechFixer</title>
+</head>
+<body>
+<div>
+
+    <div class="container1">
+    <%- include("../includes/flash.ejs") %>
+
+        
+
+        <div class="forms-container">  
+            <div class="signin-signup">
+                
+                
+                 
+                <form action="/user/signup" method="post" class="sign-in-form needs-validation" novalidate >
+                
+                      
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" class="form-control" id="username" required>
+                        
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                      <input type="email" placeholder="Email" name="email" class="form-control"   required>
+                     
+                  </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" class="form-control"   required>
+                        
+                    </div>
+                  
+                  <div class="input-field" >
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="number" placeholder="Phone" class="form-control" name="phone"   required>
+                   
+                </div>
+                <button class="btn1 btn-primary">Sign Up</button>
+                <p class="social">Have an Account <a href="/user/login" >LogIn</a></p>
+
+                    <p class="">Or Sign in with social platforms</p>
+                        <div class="social-media">
+                            <a href="https://www.facebook.com" class="social-icon" style="background-color: blue;">
+                                <i class="fab fa-facebook-f" style="color: white;"></i>
+                            </a>
+                            <a href="https://twitter.com" class="social-icon" style="background-color: skyblue;">
+                                <i class="fab fa-twitter" style="color: white;"></i>
+                            </a>
+                            <a href="https://google.com" class="social-icon" style="background-color: red;">
+                                <i class="fab fa-google" style="color:White;"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/login" class="social-icon" style="background-color: rgb(57, 57, 157);">
+                                <i class="fab fa-linkedin-in" style="color: white;"></i>
+                            </a>
+                    </div>
+                </form> 
+
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+               
+                <img src="/images/logoes[2].jpg" class="image" alt="">
+
+            </div>
+
+          
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+          'use strict'
+        
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.querySelectorAll('.needs-validation')
+        
+          // Loop over them and prevent submission
+          Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+        
+                form.classList.add('was-validated')
+              }, false)
+            })
+        })()</script>
+</body>
+</html>

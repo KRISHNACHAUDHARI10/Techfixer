@@ -1,0 +1,60 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Manage Category</li>
+</ol>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-users"></i>
+        Registered Categories
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center text-bold" id="dataTable" width="80%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Image</th>
+                        
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i = 0 ;i < list.length ; i++) { %>
+                    <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= list[i].category_name %></td>
+        <td><img src="<%= list[i].category_image %>" width="100px" height="80px"></td>
+                      
+                        
+                          <td> 
+
+                            <a href="/admin/deleteCategory/<%= list[i]._id %>" onclick="return confirm('Are You Sure ? All Sub Category also be deleted')" > <button class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</button></a>
+                        </td>
+                    </tr>
+
+                    <% }
+                    if(list.length<1){
+                    %>
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><h5>No Category </h5></td>
+                    </tr>
+                    <% } %>
+
+                </tbody>    
+
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+<%- include("../includes/footer.ejs")  %>

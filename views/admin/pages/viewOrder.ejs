@@ -1,0 +1,80 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+  <li class="breadcrumb-item">
+      <a href="/admin">Dashboard</a>
+  </li>
+  <li class="breadcrumb-item active">Manage Order</li>
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+      <i class="fas fa-users"></i>
+      Manage Orders
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered text-center text-bold" id="dataTable" width="80%" cellspacing="0">
+           
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer</th>
+      <th>Electrician</th>
+      <th>Products</th>
+      <th>Total</th>
+      <th>Payment</th>
+      <th>Date</th>
+      <th>Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.forEach(order => { %>
+      <tr>
+        <td><%= order._id %></td>
+        <td><%= order.shippingAddress.fname %> <%= order.shippingAddress.lname %></td>
+        
+        <td>
+          <% if (order.electrician) { %>
+            <%= order.electrician.first_name %> <%= order.electrician.last_name %><br>
+            📞 <%= order.electrician.phone %>
+          <% } else { %>
+            <em>Not assigned</em>
+          <% } %>
+        </td>
+
+        <td>
+          <ul>
+            <% order.products.forEach(p => { %>
+              <li><%= p.name %> (x<%= p.quantity %>) - ₹<%= p.price %></li>
+            <% }) %>
+          </ul>
+        </td>
+        <td>₹<%= order.total %></td>
+
+        <td class="<%= order.payment_status === 'Pending' ? 'badge bg-danger' : 'badge bg-success' %>">
+          <strong><%= order.payment_status %></strong>
+        </td>
+
+
+        <td><%= new Date(order.createdAt).toLocaleDateString('en-IN') %></td>
+        <td class="badge <%= order.status === 'Pending' 
+        ? 'bg-warning' 
+        : order.status === 'Cancelled' 
+          ? 'bg-danger' 
+          : 'bg-success' %>">
+<strong><%= order.status %></strong>
+</td>
+
+        
+
+
+        
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include("../includes/footer.ejs")  %>
+

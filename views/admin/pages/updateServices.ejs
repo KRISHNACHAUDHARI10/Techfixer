@@ -1,0 +1,64 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Update Services</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        Update Services
+    </div>
+    <div class="card-body">
+        <!--Add User Form-->
+        <form action="/admin/service/<%=list._id%>?_method=PUT"  method="post" enctype="multipart/form-data">
+          
+                <div class="form-group col-md-8  mb-3">
+                    <label for="name">Service Name</label>
+                    <input type="text" readonly class="form-control" value="<%= list.service_name %>" id="name" name="service_name" placeholder="eg. Fan Installation">
+                </div>
+                
+                <div class="form-group col-md-8  mb-3">
+                    <label for="category">Category Name</label>
+                    <select name="category_name" class="form-select form-select-md" aria-label=".form-select-sm example">
+                        <option selected disabled>Select Category</option>
+                    <% for(let i = 0 ;i < category.length ; i++) { %>
+                     <option <%= (list.category_name  == category[i].category_name)? 'selected' : '' %> > <%= category[i].category_name %></option>
+                    <% } %>    
+                      </select>
+                </div>
+                <div class="row">
+                <div class="form-group mb-3 col-md-6" >
+                    <label for="service_image">Service Image</label>
+                    <input type="file" class="form-control form-control-mg " name="service_image" id="service_image">
+                </div>
+                <div class="col-md-2">
+        <img src="<%= list.service_image %>" width="100px" height="80px"></td>
+                </div>
+                </div>
+                <div class="row">
+                <div class="form-group col-md-4   mb-3">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" id="price" value="<%= list.price %>" name="price" placeholder="eg.  &#8377;150">
+                </div>
+                <div class="form-group col-md-4  mb-3">
+                    <label for="time">Time</label>
+                    <input type="number" class="form-control" id="time" value="<%= list.time %>" name="time" placeholder="eg .15 min">
+                </div>
+                </div>
+                <div class="form-group col-md-8  mb-3">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control " id="description" value="<%= list.description %>" name="description" placeholder="Description">
+                </div>
+            
+               
+            <button type="submit"  class="offset-5 btn btn-success">Update Service</button>
+        </form>
+        <!-- End Form-->
+    </div>
+</div>
+
+<%- include("../includes/footer.ejs")  %>

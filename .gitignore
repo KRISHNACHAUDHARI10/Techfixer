@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Build outputs
+dist/
+build/
+
+# IDEs & editors
+.vscode/
+.idea/
+*.swp
+
+# Dependency directories (if using others)
+bower_components/
+jspm_packages/
+
+# Coverage reports
+coverage/
+
+# Optional: ignore compiled files
+*.tsbuildinfo
+*.map

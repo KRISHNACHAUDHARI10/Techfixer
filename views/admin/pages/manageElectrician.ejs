@@ -1,0 +1,64 @@
+<%- include("../includes/navbar.ejs")  %>
+<%- include("../includes/flash.ejs")  %>
+
+<ol class="breadcrumb  p-3 rounded" style="background-color: rgb(226, 222, 222);">
+    <li class="breadcrumb-item">
+        <a href="/admin">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Manage Electricians</li>
+</ol>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-users"></i>
+        Registered Electricians
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0 ; i<electrician.length ; i++) { %>
+
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%= electrician[i].first_name %> <%=electrician[i].last_name %></td>
+                            <td><%= electrician[i].phone %></td>
+                            <td><%= electrician[i].email %></td>
+                            <td><%= electrician[i].address %></td>
+                            <td>
+                                <a href="/admin/electrician/<%= electrician[i]._id %>" class="btn btn-outline-success"><i class="fa fa-user-edit"></i> Update</a>
+                                </td>
+                                <td>
+                                    <form  method="post" action="/admin/electrician/<%= electrician[i]._id %>?_method=DELETE">
+                                        <button onclick="return confirm('Are You Sure ?')" class=" btn  btn-outline-danger">
+                                            <i class="fa fa-trash"></i>Delete
+                                          </button>
+                                        </form> 
+                                                                   </td>
+                        </tr>
+                        <% } if(electrician.length < 1){  %>
+                            <tr>
+                                <td colspan="8" style="text-align: center;">No Electrician Found</td>
+                            </tr>
+                            <% } %>
+                </tbody>    
+
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+<%- include("../includes/footer.ejs")  %>
