@@ -1,5 +1,5 @@
 # TechFixer
-TechFixer is a modern web platform that connects users with certified electricians for all types of electrical services. From quick fixes to full installations, TechFixer ensures reliability, convenience, and secure transactions.
+TechFixer is a modern web platform that connects users with certified electricians for all types of electrical services. From quick fixes to full installations, TechFixer ensures reliability, convenience, and secure transactions
 
 🚀 Features:
 🛠 Online Booking System – Users can easily schedule appointments with professional electricians.
