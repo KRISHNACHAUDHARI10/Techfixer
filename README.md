@@ -17,7 +17,7 @@ TechFixer is a modern web platform that connects users with certified electricia
 📱 Responsive Design – Optimized for mobile, tablet, and desktop devices.
 
 🛠 Tech Stack:
-Frontend: HTML, CSS, JavaScript !
+Frontend: HTML, CSS, JavaScript 
 
 Backend: Node.js / Express
 
