@@ -26,6 +26,13 @@ Database: MongoDB
 Payment Gateway: Stripe
 
 Admin Dashboard: Custom built 
+👨‍💻 Project Developers
+
+Akash Dhadge – Backend Development (Postgraduate Student)
+
+Krishna Chaudhari – Frontend Development (Postgraduate Student)
+
+Both are passionate software developers currently pursuing their post-graduation and working together on building TechFixer as a real-world software project.
 
 📌 Use Case:-
 Ideal for homeowners, businesses, and property managers looking for fast, reliable, and professional electrician services.
