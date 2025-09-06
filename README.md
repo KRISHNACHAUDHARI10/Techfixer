@@ -26,6 +26,8 @@ Database: MongoDB
 Payment Gateway: Stripe
 
 Admin Dashboard: Custom built 
+
+
 👨‍💻 Project Developers
 
 Akash Dhadge – Backend Development (Postgraduate Student)
