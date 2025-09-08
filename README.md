@@ -4,7 +4,7 @@ TechFixer is a modern web platform that connects users with certified electricia
 🚀 Features:
 🛠 Online Booking System – Users can easily schedule appointments with professional electricians.
 
-💳 Stripe Payment Gateway Integration – Secure and seamless online payments through Stripe.
+💳 Stripe Payment Gateway Integration – Secure and seamless online payments through Stripe
 
 🧑‍💼 Admin Panel – Full admin control to manage users, bookings, and services.
 
