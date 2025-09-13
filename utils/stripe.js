@@ -1,9 +1,10 @@
-// utils/stripe.js
-require("dotenv").config(); // optional if already loaded in app.js
+// just i am using stripe for payments
+
+require("dotenv").config();
 const Stripe = require("stripe");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2022-11-15", // or the latest
+  apiVersion: "2022-11-15",
 });
 
 module.exports = stripe;
